@@ -42,3 +42,25 @@
 #
 # -----------------------------------------------------------------------------
 # Напишите программу ниже:
+
+
+buy_obl = float(input('Введите цену покупки облигации: '))
+sold_obl = float(input('Введите цену погашения облигации: '))
+one_mon = float(input('Введите сумму разовой купонной выплаты: '))
+per_month = int(input('Введите периодичность выплаты купонов:'))
+if buy_obl != 0:
+    komis = float(input('Введите комиссию брокера: '))
+sold_month = int(input('Введите период до погашения облигации: '))
+
+komis_on_buying = buy_obl * (komis / 100)
+full_cost = buy_obl + komis_on_buying
+full_cupon_mon = one_mon * (sold_month / per_month)
+full_mon_before = sold_obl + full_cupon_mon - full_cost
+if full_mon_before > 0:
+    nalog_on_dohod = full_mon_before * 0.13
+else:
+    nalog_on_dohod = 0
+
+pure_dohod = (full_mon_before - nalog_on_dohod) / buy_obl * 100
+
+print('Чистая доходность(%) = ', pure_dohod)
